@@ -1,2 +1,2 @@
-# petgram
-Cour for a pet's Instagram
+# Petgram
+Course for a pet's Instagram
