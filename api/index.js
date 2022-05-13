@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const { ApolloServer } = require('apollo-server-express')
 const { resolvers, typeDefs } = require('./schema')
-const jwt = require('express-jwt')
+const { expressjwt: jwt } = require('express-jwt')
 
 // this is not secure! this is for dev purposes
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'somereallylongsecretkey'
@@ -16,7 +16,8 @@ app.use(cors())
 // auth middleware
 const auth = jwt({
   secret: process.env.JWT_SECRET,
-  credentialsRequired: false
+  credentialsRequired: false,
+  algorithms: [ "HS256" ]
 })
 
 require('./adapter')

@@ -4,9 +4,13 @@
   "description": "Course for a pet's Instagram",
   "main": "index.js",
   "scripts": {
+    "deploy": "vercel -t cvw2GwnuZZserYDSqe1jigTk",
+    "vercel-build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,8 @@
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.5",
     "html-webpack-plugin": "^5.5.0",
+    "standard": "^17.0.0",
+    "vercel": "^24.2.2",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
@@ -28,5 +34,16 @@
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
+  },
+  "standard": {
+    "ignore": [
+      "/api/*",
+      "*.config.js"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_mofules/standard/eslintrc.json"
+    ]
   }
 }
