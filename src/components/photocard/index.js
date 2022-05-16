@@ -1,46 +1,32 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { MdFavoriteBorder } from 'react-icons/md'
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 
 import { Button, Img, ImgWrapper, Article } from './styles'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { useNearScreen } from '../../hooks/useNearScreen'
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png'
 
 export const PhotoCard = ({ id, src = DEFAULT_IMAGE, likes = 0 }) => {
+  const localStorageKey = `like-${id}`
 
-  const [show, setShow] = useState(false)
-  const element = useRef(null)
+  const { value: liked, setLocalStorage } = useLocalStorage(localStorageKey, false)
+  const { show, element } = useNearScreen(localStorageKey);
+  
+  const Icon = liked ? MdFavorite : MdFavoriteBorder
 
-  useEffect(() => {
-    // check if IntersectionObserver already exists
-    const promise = Promise.resolve(
-      typeof IntersectionObserver !== 'undefined' ?
-      IntersectionObserver :
-      // dynamic import = load intersection observer only when needed and run code when it's ready
-      import('intersection-observer')
-    )
-    promise.then(() => {
-      const observer = new IntersectionObserver((entries) => {
-        const { isIntersecting } = entries[0]
-        // console.log(isIntersecting)
-        if (isIntersecting) {
-          setShow(true)
-          observer.disconnect()
-        }
-      })
-      observer.observe(element.current)
-    })
-  }, [ element ])
-
-  return <Article ref={element}>
-    {show && <>
-      <a href={`/detail/${id}`}>
-        <ImgWrapper>
-          <Img src={src} />
-        </ImgWrapper>
-      </a>
-      <Button type='button'>
-        <MdFavoriteBorder size='32px' />{likes}{' '} likes!
-      </Button>
-    </>}
-  </Article>
+  return (
+    <Article ref={element}>
+      {show && <>
+        <a href={`/detail/${id}`}>
+          <ImgWrapper>
+            <Img src={src} />
+          </ImgWrapper>
+        </a>
+        <Button type='button' onClick={() => setLocalStorage(!liked)}>
+          <Icon size='32px' />{likes}{' '} likes!
+        </Button>
+      </>}
+    </Article>
+  )
 }
