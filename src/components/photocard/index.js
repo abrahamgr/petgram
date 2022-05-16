@@ -11,15 +11,24 @@ export const PhotoCard = ({ id, src = DEFAULT_IMAGE, likes = 0 }) => {
   const element = useRef(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const { isIntersecting } = entries[0]
-      // console.log(isIntersecting)
-      if (isIntersecting) {
-        setShow(true)
-        observer.disconnect()
-      }
+    // check if IntersectionObserver already exists
+    const promise = Promise.resolve(
+      typeof IntersectionObserver !== 'undefined' ?
+      IntersectionObserver :
+      // dynamic import = load intersection observer only when needed and run code when it's ready
+      import('intersection-observer')
+    )
+    promise.then(() => {
+      const observer = new IntersectionObserver((entries) => {
+        const { isIntersecting } = entries[0]
+        // console.log(isIntersecting)
+        if (isIntersecting) {
+          setShow(true)
+          observer.disconnect()
+        }
+      })
+      observer.observe(element.current)
     })
-    observer.observe(element.current)
   }, [ element ])
 
   return <Article ref={element}>
