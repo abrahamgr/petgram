@@ -4,7 +4,7 @@ import { gql, useQuery } from '@apollo/client'
 import { PhotoCard } from '../components/photocard'
 
 const query = gql`
-  query photo($id: ID!+) {
+  query photo($id: ID!) {
     photo(id: $id) {
       id,
       categoryId,
