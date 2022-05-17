@@ -1,10 +1,10 @@
 import React from 'react'
+import { Router } from '@reach/router'
 
 import { GlobalStyle } from './styles/GlobalStyles'
-import { ListOfCategories } from './components/list-of-categories'
-import { ListOfPhotocards } from './components/list-of-photocards'
 import { Logo } from './components/logo'
 import { PhotocardWithQuery } from './container/PhotocardWithQuery'
+import { Home } from './pages/Home'
 
 export const App = () => {
   const urlParams = new URLSearchParams(location.search) // eslint-disable-line no-undef
@@ -13,15 +13,17 @@ export const App = () => {
 
   return (
     <>
-      <a href='/'>
-        <Logo />
-      </a>
+      <Logo />
       <GlobalStyle />
-      <ListOfCategories />
       {
         detailId
           ? <PhotocardWithQuery detailId={detailId} />
-          : <ListOfPhotocards />
+          : (
+            <Router>
+              <Home path='/' />
+              <Home path='/pet/:categoryId' />
+            </Router>
+            )
       }
     </>
   )

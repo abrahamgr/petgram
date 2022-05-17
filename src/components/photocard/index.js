@@ -1,19 +1,36 @@
 import React from 'react'
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { gql, useMutation } from '@apollo/client'
 
-import { Button, Img, ImgWrapper, Article } from './styles'
+import { Img, ImgWrapper, Article } from './styles'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
+import { Favbutton } from '../favbutton'
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png'
+const likePhotoQuery = gql`
+  mutation likeAnonymousPhoto($input: LikePhoto!) {
+    likeAnonymousPhoto (input: $input){
+      id,
+      likes,
+      liked,
+    }
+  }
+`
 
 export const PhotoCard = ({ id, src = DEFAULT_IMAGE, likes = 0, liked }) => {
   const localStorageKey = `like-${id}`
 
   const { value: alreadyLike, setLocalStorage } = useLocalStorage(localStorageKey, liked)
   const { show, element } = useNearScreen(localStorageKey)
+  const [likePhotoMutate, { loading }] = useMutation(likePhotoQuery)
 
-  const Icon = alreadyLike ? MdFavorite : MdFavoriteBorder
+  const likePhoto = () => {
+    if (!loading) {
+      // only save to backend when there is no like
+      !liked && likePhotoMutate({ variables: { input: { id } } })
+      setLocalStorage(!alreadyLike)
+    }
+  }
 
   return (
     <Article ref={element}>
@@ -25,9 +42,7 @@ export const PhotoCard = ({ id, src = DEFAULT_IMAGE, likes = 0, liked }) => {
                 <Img src={src} />
               </ImgWrapper>
             </a>
-            <Button type='button' onClick={() => setLocalStorage(!alreadyLike)}>
-              <Icon size='32px' />{likes}{' '} likes!
-            </Button>
+            <Favbutton liked={alreadyLike} likes={likes} onClick={likePhoto} />
           </>
       }
     </Article>
