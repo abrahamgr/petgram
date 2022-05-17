@@ -5,7 +5,6 @@ import { ListOfPhotocards } from '../components/list-of-photocards'
 
 export const Home = ({ categoryId }) => (
   <>
-
     <ListOfCategories />
     <ListOfPhotocards categoryId={categoryId} />
   </>

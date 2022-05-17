@@ -1,5 +1,6 @@
 import React from 'react'
 import { gql, useMutation } from '@apollo/client'
+import { Link } from '@reach/router'
 
 import { Img, ImgWrapper, Article } from './styles'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
@@ -37,11 +38,11 @@ export const PhotoCard = ({ id, src = DEFAULT_IMAGE, likes = 0, liked }) => {
       {
         show &&
           <>
-            <a href={`/?detailId=${id}`}>
+            <Link to={`/detail/${id}`}>
               <ImgWrapper>
                 <Img src={src} />
               </ImgWrapper>
-            </a>
+            </Link>
             <Favbutton liked={alreadyLike} likes={likes} onClick={likePhoto} />
           </>
       }
