@@ -17,12 +17,11 @@ const query = gql`
 `
 
 export const PhotocardWithQuery = ({ detailId }) => {
-
   const { data, loading, error } = useQuery(query, { variables: { id: detailId } })
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
-  
+
   return (
     <PhotoCard {...data?.photo} />
   )

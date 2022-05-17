@@ -6,6 +6,7 @@ export const useNearScreen = (localStorageKey) => {
 
   useEffect(() => {
     // check if IntersectionObserver already exists
+    /* eslint-disable no-undef */
     const promise = Promise.resolve(
       typeof IntersectionObserver !== 'undefined'
         ? IntersectionObserver
@@ -13,7 +14,7 @@ export const useNearScreen = (localStorageKey) => {
         : import('intersection-observer')
     )
     promise.then(() => {
-      const observer = new IntersectionObserver((entries) => {
+      const observer = new IntersectionObserver((entries) => { // eslint-disable-line no-undef
         const { isIntersecting } = entries[0]
         // console.log(isIntersecting)
         if (isIntersecting) {
@@ -24,6 +25,7 @@ export const useNearScreen = (localStorageKey) => {
       observer.observe(element.current)
     })
   }, [element])
+  /* eslint-disable no-undef */
 
   return { element, show }
 }

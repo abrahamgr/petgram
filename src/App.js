@@ -7,20 +7,22 @@ import { Logo } from './components/logo'
 import { PhotocardWithQuery } from './container/PhotocardWithQuery'
 
 export const App = () => {
-  const urlParams = new URLSearchParams(location.search)
+  const urlParams = new URLSearchParams(location.search) // eslint-disable-line no-undef
 
   const detailId = urlParams.get('detailId')
 
-  return <>
-    <a href='/'>      
-      <Logo />
-    </a>
-    <GlobalStyle />
-    <ListOfCategories />
-    {
-      detailId ? 
-      <PhotocardWithQuery detailId={detailId} /> :
-      <ListOfPhotocards />
-    }
-  </>
+  return (
+    <>
+      <a href='/'>
+        <Logo />
+      </a>
+      <GlobalStyle />
+      <ListOfCategories />
+      {
+        detailId
+          ? <PhotocardWithQuery detailId={detailId} />
+          : <ListOfPhotocards />
+      }
+    </>
+  )
 }

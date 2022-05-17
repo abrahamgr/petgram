@@ -4,7 +4,7 @@ import { useCategoriesData } from '../../hooks/useCategoriesData'
 import { Category } from '../category'
 import { List, Item } from './styles'
 
-export const ListOfCategories = ({ }) => {
+export const ListOfCategories = () => {
   const { categories, loading, error } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
 
@@ -24,9 +24,14 @@ export const ListOfCategories = ({ }) => {
 
   const renderList = (fixed) => (
     <List fixed={fixed}>
-      {categories.map((category) => <Item key={`cat_${category.id}`}>
-        <Category {...category} />
-      </Item>)}
+      {
+        categories.map((category) => (
+          <Item key={`cat_${category.id}`}>
+            <Category {...category} />
+          </Item>
+        )
+        )
+      }
     </List>
   )
 
