@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 export const useNearScreen = (localStorageKey) => {
   const element = useRef(null)
-  const [ show, setShow ] = useState(false)
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     // check if IntersectionObserver already exists
@@ -23,7 +23,7 @@ export const useNearScreen = (localStorageKey) => {
       })
       observer.observe(element.current)
     })
-  }, [ element ])
+  }, [element])
 
   return { element, show }
 }

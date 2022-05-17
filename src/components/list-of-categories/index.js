@@ -5,7 +5,7 @@ import { Category } from '../category'
 import { List, Item } from './styles'
 
 export const ListOfCategories = ({ }) => {
-  const { categories, loading } = useCategoriesData()
+  const { categories, loading, error } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
@@ -19,7 +19,8 @@ export const ListOfCategories = ({ }) => {
     return () => document.removeEventListener('scroll', onScroll)
   }, [showFixed])
 
-  if (loading) { return 'Loading...' }
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error :(</p>
 
   const renderList = (fixed) => (
     <List fixed={fixed}>

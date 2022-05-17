@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react'
+import { gql, useQuery } from '@apollo/client'
+
+const query = gql`
+  query getCategories {
+    categories {
+      id,
+      emoji,
+      cover,
+      path    
+    }
+  }
+`
 
 export const useCategoriesData = () => {
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(true)
+  const { data, loading, error } = useQuery(query)
 
-  useEffect(() => {
-    fetch('http://localhost:3500/categories').then(response => response.json())
-      .then(data => {
-        setLoading(false)
-        setCategories(data)
-      })
-  }, [])
-
-  return { categories, loading }
+  return { categories: data?.categories || [], loading, error }
 }
