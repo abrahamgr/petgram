@@ -4,7 +4,7 @@
   "description": "Course for a pet's Instagram",
   "main": "index.js",
   "scripts": {
-    "deploy": "vercel -t cvw2GwnuZZserYDSqe1jigTk",
+    "deploy": "vercel -t <token>",
     "vercel-build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",

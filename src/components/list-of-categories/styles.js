@@ -4,6 +4,7 @@ export const List = styled.ul`
     display: flex;
     overflow: scroll;
     width: 100%;
+    /* padding-bottom: 50px; */
     // use props instead of adding classes directly to component
     ${props => props.fixed && css`
         background: #FFF;
@@ -13,6 +14,7 @@ export const List = styled.ul`
         margin: 0 auto;
         max-width: 400px;
         padding: 5px;
+        /* padding-bottom: 50px; */
         position: fixed;
         right: 0;
         top: -20px;

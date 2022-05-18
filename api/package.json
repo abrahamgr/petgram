@@ -4,9 +4,9 @@
   "description": "API for petgram",
   "main": "index.js",
   "scripts": {
-    "deploy": "vercel -t cvw2GwnuZZserYDSqe1jigTk",
-    "start:api": "NODE_ENV=production node index.js",
-    "dev:api": "nodemon index.js --ignore db.json",
+    "deploy": "vercel -t <token>",
+    "start": "NODE_ENV=production node index.js",
+    "dev": "nodemon index.js --ignore db.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
