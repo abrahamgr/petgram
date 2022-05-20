@@ -28,7 +28,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    const { id, email } = req.user || {}
+    // const { id, email } = req.user || {}
+    // use auth property, it contains 
+    const { id, email } = req.auth || {}
     return { id, email }
   }
 })

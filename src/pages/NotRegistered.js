@@ -8,8 +8,8 @@ const registerQuery = gql`
   mutation signup($input: UserCredentials!) {
     signup(input: $input)
   }
-`,
-loginQuery = gql`
+`
+const loginQuery = gql`
   mutation login($input: UserCredentials!) {
     login(input: $input)
   }
@@ -26,14 +26,14 @@ export const NotRegistered = () => {
     const promise = isRegister ? signUp({ variables }) : logIn({ variables })
     promise.then((response) => {
       // get get token
-      response.data.signup
-      console.log(response)
-      activateAuth()
+      const { data } = response
+      activateAuth(isRegister ? data.signup : data.login)
     })
-    .catch(console.error)
+      .catch(console.error)
   }
 
-  const handleIsRegister = () => {
+  const handleIsRegister = (e) => {
+    e.preventDefault()
     setRegister(!isRegister)
   }
 
@@ -41,14 +41,18 @@ export const NotRegistered = () => {
     <div style={{ width: '90%', margin: '0 auto' }}>
       {
         isRegister
-        ? <>
-            <UserForm key='register' title='Register' onSubmit={handleSubmit} error={signupError} loading={signupLoading} />
-            <p>Already have an account? Please login <label onClick={handleIsRegister}>here</label></p>
-          </>
-        : <>
-            <UserForm key='login' title='Log in' onSubmit={handleSubmit} error={logInError} loading={logInLoading} />
-            <p>Dont have an account? Please register <label onClick={handleIsRegister}>here</label></p>
-          </>
+          ? (
+            <>
+              <UserForm key='register' title='Register' onSubmit={handleSubmit} error={signupError} loading={signupLoading} />
+              <p>Already have an account? Please login <a href='' onClick={handleIsRegister}>here</a></p>
+            </>
+            )
+          : (
+            <>
+              <UserForm key='login' title='Log in' onSubmit={handleSubmit} error={logInError} loading={logInLoading} />
+              <p>Dont have an account? Please register <a href='' onClick={handleIsRegister}>here</a></p>
+            </>
+            )
       }
     </div>
   )

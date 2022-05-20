@@ -164,11 +164,7 @@ const resolvers = {
       }
 
       // return json web token
-      return jsonwebtoken.sign(
-        { id: user.id, email: user.email },
-        process.env.JWT_SECRET,
-        { expiresIn: '1d' }
-      )
+      return jsonwebtoken.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1d' })
     }
   },
   Query: {

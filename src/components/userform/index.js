@@ -8,9 +8,8 @@ const initialState = {
 }
 
 export const UserForm = ({ title, onSubmit, loading, error }) => {
-
-  const [ state , setState ]  = useState(initialState)
-  const { email , password } = state
+  const [state, setState] = useState(initialState)
+  const { email, password } = state
 
   const onChange = (e) => {
     const { value, name } = e.target
@@ -30,19 +29,19 @@ export const UserForm = ({ title, onSubmit, loading, error }) => {
       <Title>{title}</Title>
       <Form onSubmit={handleSubmit}>
         <Input
-            placeholder="Email" 
-            name="email"
-            value={email}
-            onChange={onChange}
+          placeholder='Email'
+          name='email'
+          value={email}
+          onChange={onChange}
         />
         <Input
-            type="password"
-            placeholder="Password" 
-            name="password"
-            value={password}
-            onChange={onChange}
+          type='password'
+          placeholder='Password'
+          name='password'
+          value={password}
+          onChange={onChange}
         />
-        <Button type="submit" disabled={loading}>{title}</Button>
+        <Button type='submit' disabled={loading}>{title}</Button>
         {error && error?.message && <Error>{error.message}</Error>}
       </Form>
     </>

@@ -8,7 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "API",
-            "program": "${workspaceFolder}/api/index.js"
+            "program": "${workspaceFolder}/api/index.js",
+            "localRoot": "${workspaceFolder}/api"
         },
     ]
 }

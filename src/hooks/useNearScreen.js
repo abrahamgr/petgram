@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-export const useNearScreen = (localStorageKey) => {
+export const useNearScreen = () => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
 

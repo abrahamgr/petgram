@@ -32,7 +32,11 @@
     {
       "id": "e4aade10-d6e9-11ec-acf4-918f98a02cf4",
       "password": "$2b$10$ZFVhS8gBNJD1.myraqClQeZ/ArQQxEpMYoJehCIYp0AOTlIwfafNG",
-      "favs": [],
+      "favs": [
+        "0",
+        "15",
+        "18"
+      ],
       "avatar": "https://gravatar.com/avatar/6f2585c69d01dc84130891cee01ae9c2",
       "email": "oxer_@hotmail.com"
     },
@@ -94,28 +98,28 @@
       "categoryId": 2,
       "src": "https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png",
       "userId": 100,
-      "likes": 8
+      "likes": 9
     },
     {
       "id": 1,
       "categoryId": 1,
       "src": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
-      "likes": 45
+      "likes": 46
     },
     {
       "id": 15,
       "categoryId": 4,
       "src": "https://images.unsplash.com/photo-1520561805070-83c413349512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
-      "likes": 1
+      "likes": 2
     },
     {
       "id": 18,
       "categoryId": 5,
       "src": "https://images.unsplash.com/photo-1518001589401-1743b61d1def?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 2,
-      "likes": 15
+      "likes": 16
     },
     {
       "id": 16,
