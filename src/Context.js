@@ -12,6 +12,10 @@ export const Provider = ({ children }) => {
       // console.log('token', token)
       window.localStorage.setItem('token', token)
       setIsAuth(true)
+    },
+    removeAuth: () => {      
+      window.localStorage.removeItem('token')
+      setIsAuth(false)
     }
   }
   return (

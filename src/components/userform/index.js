@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import { Button, Form, Input, Title, Error } from './styles'
+import { Form, Input, Title, Error } from './styles'
+import { Button } from '../submit-button'
 
 const initialState = {
   email: '',

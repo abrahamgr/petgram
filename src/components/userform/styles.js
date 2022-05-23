@@ -20,18 +20,6 @@ export const Input = styled.input`
   padding: 8px 4px;
 `
 
-export const Button = styled.button`
-  background-color: #8d00ff;
-  border-radius: 3px;
-  height: 32px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 10px;
-  &[disabled] {
-    opacity: .3;
-  }
-`
-
 export const Error = styled.p`
   color: red;
   margin-bottom: 10px;

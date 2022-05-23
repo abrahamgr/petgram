@@ -1,5 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { navigate } from '@reach/router'
+import { Context } from '../Context'
 
-export const User = () => (
-  <h1>User</h1>
-)
+import { Button } from '../components/submit-button'
+
+export const User = () => {
+
+  const { removeAuth } = useContext(Context)
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    removeAuth()
+    navigate('/')
+  }
+
+  return (
+    <>
+      <h2>User</h2>
+      <Button onClick={handleClick}>Sign out</Button>
+    </>
+  )
+}
