@@ -5,7 +5,6 @@ import { Context } from '../Context'
 import { Button } from '../components/submit-button'
 
 export const User = () => {
-
   const { removeAuth } = useContext(Context)
 
   const handleClick = (e) => {
