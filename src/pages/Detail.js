@@ -3,6 +3,7 @@ import { gql, useQuery } from '@apollo/client'
 
 import { PhotoCard } from '../components/photocard'
 import { ListOfCategories } from '../components/list-of-categories'
+import { Layout } from '../components/layout'
 
 const query = gql`
   query photo($id: ID!) {
@@ -24,9 +25,9 @@ export const Detail = ({ detailId }) => {
   if (error) return <p>Error :(</p>
 
   return (
-    <>
+    <Layout title='Photo'>
       <ListOfCategories />
       <PhotoCard {...data?.photo} />
-    </>
+    </Layout>
   )
 }

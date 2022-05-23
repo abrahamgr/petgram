@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { gql, useQuery } from '@apollo/client'
 
 import { ListOfFavs } from '../components/list-of-favs'
@@ -23,6 +24,10 @@ export const Favs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Petgram | Your favorites</title>
+        <meta name='description' content={`here you can find your favorites photos`} />
+      </Helmet>
       <h1>Favs</h1>
       <ListOfFavs favs={data.favs || []} />
     </>
