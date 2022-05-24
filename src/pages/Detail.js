@@ -2,7 +2,6 @@ import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 
 import { PhotoCard } from '../components/photocard'
-import { ListOfCategories } from '../components/list-of-categories'
 import { Layout } from '../components/layout'
 
 const query = gql`
@@ -26,7 +25,6 @@ export const Detail = ({ detailId }) => {
 
   return (
     <Layout title='Photo'>
-      <ListOfCategories />
       <PhotoCard {...data?.photo} />
     </Layout>
   )

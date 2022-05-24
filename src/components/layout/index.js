@@ -1,16 +1,18 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
+import { Div, Title, Subtitle } from './styles'
+ 
 export const Layout = ({ title, subtitle, children }) => (
   <>
     <Helmet>
       {title && <title>{title} | Petgram</title>}
       {subtitle && <meta name='description' content={subtitle} />}
     </Helmet>
-    <div>
-      {title && <h1>{title}</h1>}
-      {subtitle && <h2>{subtitle}</h2>}
+    <Div>
+      {title && <Title>{title}</Title>}
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
       {children}
-    </div>
+    </Div>
   </>
 )

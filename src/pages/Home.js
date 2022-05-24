@@ -1,16 +1,12 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 
 import { ListOfCategories } from '../components/list-of-categories'
 import { ListOfPhotocards } from '../components/list-of-photocards'
+import { Layout } from '../components/layout'
 
 export const Home = ({ categoryId }) => (
-  <>
-    <Helmet>
-      <title>Petgram | Pet's photos</title>
-      <meta name='description' content={`Here you can find amazin pet's photos`} />
-    </Helmet>
+  <Layout title={`Pet's photos`} subtitle={`Here you can find amazin pet's photos`}>
     <ListOfCategories />
     <ListOfPhotocards categoryId={categoryId} />
-  </>
+  </Layout>
 )

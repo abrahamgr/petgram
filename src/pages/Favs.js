@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { gql, useQuery } from '@apollo/client'
 
 import { ListOfFavs } from '../components/list-of-favs'
+import { Layout } from '../components/layout'
 
 const getFavsQuery = gql`
   query getFavs {
@@ -23,13 +24,8 @@ export const Favs = () => {
   if (error) return <p>Error :(</p>
 
   return (
-    <>
-      <Helmet>
-        <title>Petgram | Your favorites</title>
-        <meta name='description' content={`here you can find your favorites photos`} />
-      </Helmet>
-      <h1>Favs</h1>
+    <Layout title='Favorites'>
       <ListOfFavs favs={data.favs || []} />
-    </>
+    </Layout>
   )
 }
