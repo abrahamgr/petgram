@@ -10,7 +10,8 @@
     "build": "webpack",
     "dev": "webpack-dev-server --history-api-fallback",
     "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "serve": "webpack --mode development && npx serve dist -s"
   },
   "repository": {
     "type": "git",

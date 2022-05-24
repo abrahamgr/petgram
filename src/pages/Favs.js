@@ -1,5 +1,4 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { gql, useQuery } from '@apollo/client'
 
 import { ListOfFavs } from '../components/list-of-favs'
