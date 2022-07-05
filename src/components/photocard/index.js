@@ -1,4 +1,6 @@
 import React from 'react'
+
+import PropTypes from 'prop-types'
 import { gql, useMutation } from '@apollo/client'
 import { Link } from '@reach/router'
 
@@ -44,4 +46,19 @@ export const PhotoCard = ({ id, src = DEFAULT_IMAGE, likes = 0, liked }) => {
       }
     </Article>
   )
+}
+
+PhotoCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  likes: function (props, propName, componentName) {
+    const propValue = props[propName]
+    if (propValue === undefined) {
+      return new Error(`${propName} value must be defined`)
+    }
+    if (propValue < 0) {
+      return new Error(`${propName} value must be greater than 0`)
+    }
+  },
+  liked: PropTypes.bool.isRequired
 }
