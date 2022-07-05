@@ -15,8 +15,8 @@ const getFavsQuery = gql`
     }
   }
 `
-
-export const Favs = () => {
+// export this way to allow us to use in Reac.lazy
+export default () => {
   const { data, loading, error } = useQuery(getFavsQuery, { fetchPolicy: 'cache-and-network' })
 
   if (loading) return <p>Loading...</p>
