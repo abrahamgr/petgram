@@ -9,5 +9,18 @@
 <body>
     <div id="root"></div>
     <noscript>This app needs Jacascript enabled to work</noscript>
+    <script>
+        if('serviceWorker' in navigator){
+            window.addEventListener('load', function(){
+                navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service worker registered')
+                })
+                .catch((err) => {
+                    console.error('Service worker not registered', err)
+                })
+            })
+        }
+    </script>
 </body>
 </html>
